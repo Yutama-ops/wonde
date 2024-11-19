@@ -11,7 +11,6 @@ const useFetchTeacher = () => {
     const includes = [
       "contact_details",
       "employment_details",
-      "roles",
       "classes"
     ];
 
