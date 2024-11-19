@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import TestGroup from './components/TestGroup'
+import { Button } from 'primereact/button';
+import Card from './components/Card';
 
-function App() {
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+
+
+const myApp = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Card />
+      <Button label="Click" />
+      <TestGroup />
+    </>
+  )
 }
 
-export default App;
+export default myApp
