@@ -4,10 +4,6 @@ import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
 import Table from './components/Table/Table';
 
-import './App.css';
-import 'primereact/resources/themes/lara-dark-indigo/theme.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 const MyApp = () => {
   const { data, meta, error, currentPage, goToNextPage, goToPreviousPage } = useFetchTeacher();
 
