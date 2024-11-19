@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFetchTeacher } from './hooks/useFetchSchools';
+import { useFetchTeacher } from './hooks/useFetchTeacher';
 import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
 import Table from './components/Table/Table';
@@ -17,9 +17,12 @@ const MyApp = () => {
 
   return (
     <div className='mt-4 container'>
+
       <h1 className='text-center'>Teacher Information</h1>
       <h2 className='text-center'>School: Wonde Testing School / A1930499544</h2>
+
       <Divider />
+
       <div className='row justify-content-center'>
         <div className='col-md-12'>
           <Table teacherData={data} />
@@ -34,6 +37,7 @@ const MyApp = () => {
           <Button label="Next" onClick={goToNextPage} disabled={!meta?.pagination?.next} />
         </div>
       </div>
+
       <div className='mt-3 row'>
         <div className='col-md-12 text-end'>
           <span className='mx-2'>Page {currentPage}</span>

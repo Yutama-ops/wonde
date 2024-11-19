@@ -1,25 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// used this once to identify Wonde Testing School ID
-const useFetchSchools = () => {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch('https://api.wonde.com/v1.0/schools', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.REACT_APP_WONDE_API_TOKEN}`
-      }
-    })
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => setError(error));
-  }, []);
-
-  return { data, error };
-};
-
 // Fetch teacher data from Wonde API
 const useFetchTeacher = () => {
   const [data, setData] = useState([]);
@@ -73,4 +53,4 @@ const useFetchTeacher = () => {
 
 
 
-export { useFetchSchools, useFetchTeacher };
+export { useFetchTeacher };
