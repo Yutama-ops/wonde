@@ -6,17 +6,20 @@ const useFetchTeacher = () => {
   const [meta, setMeta] = useState(null);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const includes = [
       "contact_details",
       "employment_details",
+      "roles",
       "classes"
     ];
 
     const queryString = includes.join(',');
 
     const fetchData = (page) => {
+      setLoading(true);
       fetch(`https://api.wonde.com/v1.0/schools/A1930499544/employees?include=${queryString}&page=${page}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -27,8 +30,12 @@ const useFetchTeacher = () => {
         .then(responseData => {
           setData(responseData.data);
           setMeta(responseData.meta);
+          setLoading(false);
         })
-        .catch(error => setError(error));
+        .catch(error => {
+          setError(error);
+          setLoading(false);
+        });
     };
 
     fetchData(currentPage);
@@ -46,10 +53,7 @@ const useFetchTeacher = () => {
     }
   };
 
-  return { data, meta, error, currentPage, goToNextPage, goToPreviousPage };
+  return { data, meta, error, currentPage, goToNextPage, goToPreviousPage, loading };
 };
 
-
-
-
-export { useFetchTeacher };
+export default useFetchTeacher;
