@@ -76,4 +76,6 @@ Route::post('users', [UsersController::class, 'store']);
 
 and remove forward slash from the form method to cleanup the code
 
+```
 <form method="POST" action="users"/>
+```
