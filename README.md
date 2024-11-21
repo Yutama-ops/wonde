@@ -68,3 +68,52 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Test 2 Step by step:
+After signed in into mysql
+
+I listed the databases
+SHOW DATABASES;
+
+I selected the database
+USE wonde;
+
+SHOW TABLES;
+I listed the tables in the database
+
+SELECT id, name, contact_name FROM companies;
+I listed the id, name and contact name of the companies and have found that Koss-Brown Ltd id is 30
+
+SELECT \* FROM company_user WHERE company_id = 30;
+SELECT id, first_name, last_name FROM users WHERE id IN (45, 276, 278, 279);
+Then I listed the users in the Koss-Brown Ltd company and have found that Felipa Hamill is not registered to Koss-Brown organisation
+
+SELECT _ FROM users WHERE first_name = 'Felipa' AND last_name = 'Hamill';
+SELECT _ FROM users WHERE id = 45;
+Then I i compare Felipa with other users and discovered that column type was different and have discovered Felipa id which is 277
+
+SELECT \* FROM role_user where user_id IN (45,276,278,279,277);
+Then i check user and list all of their role id and have found that Felipa Hamill was not in the table
+
+SELECT \* FROM roles;
+Then I listed the roles in the database and have found other people from Koss have roles which is owner, support, and project-manager
+
+So my final guess is that Felipa Hamill has not assigned a role and the SQL code for adding the role is
+
+It is actually either of the following 3,6, and 26.
+INSERT INTO role_user (user_id, role_id) VALUES
+(277, 3),
+(277, 6),
+(277, 26);
+
+I have found that Felipa Hamill was not registered to Koss-Brown organisation
+
+SELECT \* FROM role_user where user_id IN (45,276,278,279,277);
+
+Test 3:
+change method from get to post in the web.php file to add new users to the database
+Route::post('users', [UsersController::class, 'store']);
+
+and remove forward slash from the form method to cleanup the code
+
+<form method="POST" action="users"/>
